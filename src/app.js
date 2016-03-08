@@ -8,11 +8,11 @@ import AppContainer from './containers/AppContainer';
 
 /* use redux devTools of chrome extension */
 const store = (window.devToolsExtension ? 
-	window.devToolsExtension()(createStore) : createStore)(msgApp);
+    window.devToolsExtension()(createStore) : createStore)(msgApp);
 
 render(
-	<Provider store={store}>
-		<AppContainer />
-	</Provider>,
-	document.getElementById('root')
+    <Provider store={store}>
+        <AppContainer />
+    </Provider>,
+    document.getElementById('root')
 );

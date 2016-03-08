@@ -26,10 +26,10 @@ const list = (state, action) => {
 const lists = (state = [], action) => {
     switch (action.type) {
         case types.ADD_LIST:
-        	return [
-        		...state,
-        		list(undefined, action)
-        	];
+            return [
+                ...state,
+                list(undefined, action)
+            ];
         case types.DEL_LIST:
             return state.filter((list)=> {
                 return action.id !== list.id;
