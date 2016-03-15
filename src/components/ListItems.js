@@ -21,7 +21,7 @@ class ListItems extends Component {
                     <button className="button del" onClick={this._onDel}>X</button>
                 </div>
                 <div className="item-id"># {id}
-                    <span className="item-user-name">{user}</span> : 
+                    <span className="item-user-name">{user}</span> :
                 </div>
                 <div className="item-msg">{message}</div>
                 <div className="item-time">{time}</div>

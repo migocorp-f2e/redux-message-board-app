@@ -28,7 +28,7 @@ class List extends Component {
                     <ul className="list-ul">
                         {
                             lists.map(info =>
-                                <ListItems 
+                                <ListItems
                                     key={info.id}
                                     {...info}
                                     curr_user={modals.user_id}
