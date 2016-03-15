@@ -2,12 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Modal } from 'antd';
+
 import ListItems from '../components/ListItems';
-import { delList } from '../actions';
+import { getList, delList } from '../actions';
 
 class List extends Component {
     constructor() {
         super();
+    }
+    componentDidMount() {
+        const { getList } = this.props;
+        getList();
     }
     _onDel = (id) => {
         const confirm = Modal.confirm;
@@ -50,6 +55,7 @@ export default connect(
         modals: state.modals
     }),
     dispatch => bindActionCreators({
+        getList,
         delList
     }, dispatch)
 )(List);

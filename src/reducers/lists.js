@@ -10,6 +10,11 @@ const getNowTime = () => {
 
 const lists = (state = {}, action) => {
     switch (action.type) {
+        case types.GET_LIST_SUCCESS:
+            return {
+                ...state,
+                ...action.lists
+            }
         case types.ADD_LIST:
             const id = listId++;
             return {

@@ -1,4 +1,29 @@
 import * as types from '../constants/ActionTypes';
+import {FirebaseApiClient} from '../api/api';
+
+/* List: get */
+export const getList = () => {
+    const firebaseAPI = new FirebaseApiClient();
+    //thunk 可以 return 一個 function
+    return dispatch => {
+        dispatch(getListRequest())
+        return firebaseAPI.get('lists')
+            .then((res) => dispatch(getListReceive(res)))
+    }
+};
+
+function getListRequest() {
+    return {
+        type: 'GET_LIST'
+    }
+}
+
+function getListReceive(res) {
+    return {
+        type: 'GET_LIST_SUCCESS',
+        lists: res
+    } 
+}
 
 /* List: 加入留言列表 */
 export const addList = (message, user) => {
