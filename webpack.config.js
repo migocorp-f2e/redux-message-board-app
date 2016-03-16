@@ -34,5 +34,12 @@ module.exports = {
                 loader: 'url?limit=8192'
             }
         ]
+    },
+    resolve: {
+        modulesDirectories: [
+            'src',
+            'node_modules'
+        ],
+        extensions: ['', '.js', '.jsx', '.css', '.scss']
     }
 };
