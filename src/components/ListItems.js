@@ -10,8 +10,8 @@ class ListItems extends Component {
         onDel(id);
     }
     _setClassName = () => {
-        const { user_id, curr_user } = this.props;
-        return classNames('itemWrap', ((user_id === curr_user) ? 'is-my-msg' : ''));
+        const { user, curr_user } = this.props;
+        return classNames('itemWrap', ((user === curr_user) ? 'is-my-msg' : ''));
     }
     render() {
         const { id, user, message, time } = this.props;
@@ -30,14 +30,14 @@ class ListItems extends Component {
     };
 };
 
-ListItems.propTypes = {
-    id       : PropTypes.number.isRequired,
-    user     : PropTypes.string.isRequired,
-    user_id  : PropTypes.string.isRequired,
-    time     : PropTypes.string.isRequired,
-    message  : PropTypes.string.isRequired,
-    curr_user: PropTypes.string.isRequired,
-    onDel    : PropTypes.func.isRequired
-};
+// ListItems.propTypes = {
+//     id       : PropTypes.number.isRequired,
+//     user     : PropTypes.string.isRequired,
+//     user_id  : PropTypes.string.isRequired,
+//     time     : PropTypes.string.isRequired,
+//     message  : PropTypes.string.isRequired,
+//     curr_user: PropTypes.string.isRequired,
+//     onDel    : PropTypes.func.isRequired
+// };
 
 export default ListItems;

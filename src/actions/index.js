@@ -1,5 +1,18 @@
 import * as types from '../constants/ActionTypes';
 
+let fetchSuccessed = (json) => {
+    return {
+        type : types.GET_LIST_SUCCESSED,
+        lists: json
+    };
+};
+
+let fetchFailed = () => {
+    return {
+        type: types.GET_LIST_FAILED
+    };
+};
+
 /* List: 加入留言列表 */
 export const addList = (message, user) => {
     return {
@@ -49,3 +62,37 @@ export const toggleModal = (visible) => {
         visible
     };
 };
+
+/* Firebase */
+export const setListToFirebase = (value) => {
+    return {
+        types   : [fetchSuccessed, fetchFailed],
+        fetchAPI: {
+            child : 'lists',
+            method: 'set',
+            value
+        }
+    };
+};
+
+export const getListFromFirebase = () => {
+    return {
+        types   : [fetchSuccessed, fetchFailed],
+        fetchAPI: {
+            child : 'lists',
+            method: 'get'
+        }
+    };
+};
+
+export const delListOnFirebase = (val) => {
+    return {
+        types   : [fetchSuccessed, fetchFailed],
+        fetchAPI: {
+            child : 'lists',
+            method: 'del',
+            val
+        }
+    };
+};
+

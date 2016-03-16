@@ -3,25 +3,31 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Modal } from 'antd';
 import ListItems from '../components/ListItems';
-import { delList } from '../actions';
+import { delList, getListFromFirebase, delListOnFirebase } from '../actions';
 
 class List extends Component {
     constructor() {
         super();
     }
+    componentDidMount() {
+        const {getListFromFirebase} = this.props;
+        getListFromFirebase();
+    }
     _onDel = (id) => {
         const confirm = Modal.confirm;
-        const { delList } = this.props;
+        const { delList, delListOnFirebase } = this.props;
         confirm({
             title: '您是否確認要刪除留言?' ,
             onOk() {
-                delList(id);
+                // delList(id);
+                delListOnFirebase(id);
             },
             onCancel() {}
         });
     }
     render() {
         const { lists, modals } = this.props;
+        console.log('+++', lists);
         return (
             <div className="container">
                 <div className="listWrap">
@@ -31,6 +37,7 @@ class List extends Component {
                                 return (
                                     <ListItems 
                                         key={key}
+                                        id={key}
                                         {...lists[key]}
                                         curr_user={modals.user_id}
                                         onDel={this._onDel}
@@ -50,6 +57,8 @@ export default connect(
         modals: state.modals
     }),
     dispatch => bindActionCreators({
-        delList
+        delList,
+        getListFromFirebase,
+        delListOnFirebase
     }, dispatch)
 )(List);

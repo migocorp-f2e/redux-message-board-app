@@ -6,3 +6,6 @@ export const UPDATE_MESSAGE   = 'UPDATE_MESSAGE';
 export const ADD_LIST         = 'ADD_LIST';
 export const EDIT_LIST        = 'EDIT_LIST';
 export const DEL_LIST         = 'DEL_LIST';
+
+export const GET_LIST_SUCCESSED  = 'GET_LIST_SUCCESSED';
+export const GET_LIST_FAILED     = 'GET_LIST_FAILED';

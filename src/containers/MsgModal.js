@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateMsg, updateUser, toggleModal, addList } from '../actions';
+import { updateMsg, updateUser, toggleModal, addList, setListToFirebase } from '../actions';
 import { Modal, Form, Input } from 'antd';
 
 class MsgModal extends Component {
@@ -20,8 +20,9 @@ class MsgModal extends Component {
         };
     }
     _handleOk = () => {
-        const { user, message, addList, toggleModal } = this.props;
-        addList(message, user);
+        const { user, message, addList, toggleModal, setListToFirebase } = this.props;
+        //addList(message, user);
+        setListToFirebase({message, user});
         toggleModal(false);
     }
     _handleCancel = () => {
@@ -77,6 +78,7 @@ export default connect(
         updateMsg,
         updateUser,
         toggleModal,
-        addList
+        addList,
+        setListToFirebase
     }, dispatch)
 )(MsgModal);
