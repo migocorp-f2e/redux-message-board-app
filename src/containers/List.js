@@ -19,7 +19,6 @@ class List extends Component {
         confirm({
             title: '您是否確認要刪除留言?' ,
             onOk() {
-                // delList(id);
                 delListOnFirebase(id);
             },
             onCancel() {}
@@ -27,7 +26,6 @@ class List extends Component {
     }
     render() {
         const { lists, modals } = this.props;
-        console.log('+++', lists);
         return (
             <div className="container">
                 <div className="listWrap">

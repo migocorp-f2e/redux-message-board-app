@@ -30,14 +30,4 @@ class ListItems extends Component {
     };
 };
 
-// ListItems.propTypes = {
-//     id       : PropTypes.number.isRequired,
-//     user     : PropTypes.string.isRequired,
-//     user_id  : PropTypes.string.isRequired,
-//     time     : PropTypes.string.isRequired,
-//     message  : PropTypes.string.isRequired,
-//     curr_user: PropTypes.string.isRequired,
-//     onDel    : PropTypes.func.isRequired
-// };
-
 export default ListItems;
