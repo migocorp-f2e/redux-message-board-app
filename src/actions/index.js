@@ -13,6 +13,14 @@ let fetchFailed = () => {
     };
 };
 
+let onComplete = (error) => {
+    if (error) {
+        console.log('Synchronization failed');
+    } else {
+        console.log('Synchronization succeeded');
+    }
+};
+
 /* List: 加入留言列表 */
 export const addList = (message, user) => {
     return {
@@ -66,7 +74,7 @@ export const toggleModal = (visible) => {
 /* Firebase */
 export const setListToFirebase = (value) => {
     return {
-        types   : [fetchSuccessed, fetchFailed],
+        types   : [onComplete],
         fetchAPI: {
             child : 'lists',
             method: 'set',
@@ -87,7 +95,7 @@ export const getListFromFirebase = () => {
 
 export const delListOnFirebase = (val) => {
     return {
-        types   : [fetchSuccessed, fetchFailed],
+        types   : [onComplete],
         fetchAPI: {
             child : 'lists',
             method: 'del',
