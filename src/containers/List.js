@@ -37,7 +37,7 @@ class List extends Component {
                                         key={key}
                                         id={key}
                                         {...lists[key]}
-                                        curr_user={modals.user_id}
+                                        curr_user={modals.user}
                                         onDel={this._onDel}
                                 />)
                             })
