@@ -13,17 +13,28 @@ export default function appMiddleware () {
         }
         //藉由ES6的寫法把types讀進來
         const [ success, failure ] = types;
-        const [ onComplete ] = types;
-        const fredRef = firebaseRef.child(fetchAPI.child);
+        const childRef = firebaseRef.child(fetchAPI.child);
         switch (fetchAPI.method) {
             case 'set':
-                fredRef.push(fetchAPI.value, onComplete);
+                childRef.push(fetchAPI.value, (error) => {
+                    if (error) {
+                        next(failure(error));
+                    } else {
+                        next(success());   
+                    }
+                });
                 break;
             case 'del':
-                fredRef.child(fetchAPI.val).remove(onComplete);
+                childRef.child(fetchAPI.val).remove((error) =>{
+                    if (error) {
+                        next(failure(error));
+                    } else {
+                        next(success());   
+                    }
+                });
                 break;
             case 'get':
-                fredRef.on('value', (snapshot) => {
+                childRef.on('value', (snapshot) => {
                     next(success(snapshot.val()));
                 }, (error) => {
                     next(failure(error.code));

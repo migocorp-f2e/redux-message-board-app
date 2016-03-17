@@ -1,24 +1,29 @@
 import * as types from '../constants/ActionTypes';
 
-let fetchSuccessed = (json) => {
+let getListSuccessed = (json) => {
     return {
         type : types.GET_LIST_SUCCESSED,
         lists: json
     };
 };
 
-let fetchFailed = () => {
+let delListSuccessed = () => {
     return {
-        type: types.GET_LIST_FAILED
+        type : types.DEL_LIST_SUCCESSED
     };
 };
 
-let onComplete = (error) => {
-    if (error) {
-        console.log('Synchronization failed');
-    } else {
-        console.log('Synchronization succeeded');
-    }
+let setListSuccessed = () => {
+    return {
+        type : types.SET_LIST_SUCCESSED
+    };
+};
+
+let fetchFailed = (err) => {
+    return {
+        type: types.GET_LIST_FAILED,
+        code: err
+    };
 };
 
 /* List: 加入留言列表 */
@@ -74,7 +79,7 @@ export const toggleModal = (visible) => {
 /* Firebase */
 export const setListToFirebase = (value) => {
     return {
-        types   : [onComplete],
+        types   : [setListSuccessed, fetchFailed],
         fetchAPI: {
             child : 'lists',
             method: 'set',
@@ -85,7 +90,7 @@ export const setListToFirebase = (value) => {
 
 export const getListFromFirebase = () => {
     return {
-        types   : [fetchSuccessed, fetchFailed],
+        types   : [getListSuccessed, fetchFailed],
         fetchAPI: {
             child : 'lists',
             method: 'get'
@@ -95,7 +100,7 @@ export const getListFromFirebase = () => {
 
 export const delListOnFirebase = (val) => {
     return {
-        types   : [onComplete],
+        types   : [delListSuccessed, fetchFailed],
         fetchAPI: {
             child : 'lists',
             method: 'del',

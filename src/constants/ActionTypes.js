@@ -9,3 +9,5 @@ export const DEL_LIST         = 'DEL_LIST';
 
 export const GET_LIST_SUCCESSED  = 'GET_LIST_SUCCESSED';
 export const GET_LIST_FAILED     = 'GET_LIST_FAILED';
+export const DEL_LIST_SUCCESSED  = 'DEL_LIST_SUCCESSED';
+export const SET_LIST_SUCCESSED  = 'SET_LIST_SUCCESSED';

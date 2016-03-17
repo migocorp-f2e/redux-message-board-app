@@ -21,7 +21,6 @@ class MsgModal extends Component {
     }
     _handleOk = () => {
         const { user, message, addList, toggleModal, setListToFirebase } = this.props;
-        //addList(message, user);
         setListToFirebase({message, user});
         toggleModal(false);
     }
